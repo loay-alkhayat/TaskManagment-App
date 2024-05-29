@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:taskmanager_app/core/enums/request_states.dart';
-import 'package:taskmanager_app/modules/task_manager/domain/entities/get_tasks_entity.dart';
 import 'package:taskmanager_app/modules/task_manager/domain/parameters/get_todo_parameters.dart';
 import 'package:taskmanager_app/modules/task_manager/domain/parameters/update_todo_parameters.dart';
 import 'package:taskmanager_app/modules/task_manager/presentation/bloc/task_manager_bloc.dart';
@@ -16,42 +15,26 @@ import '../../../../core/components/show_toast.dart';
 import '../../../../core/components/width_button.dart';
 import '../../../../core/constants/app_colors.dart';
 
-class UpdateTodoScreen extends StatefulWidget {
-  final GetTodosInformationEntity? getTodosInformationEntity;
+class UpdateTodoScreen extends StatelessWidget {
+  String? todoDescription;
+  int? todoID;
 
-  const UpdateTodoScreen({super.key, required this.getTodosInformationEntity});
-  @override
-  State<UpdateTodoScreen> createState() => _UpdateTodoScreenState();
-}
+  UpdateTodoScreen(
+      {super.key, required this.todoDescription, required this.todoID});
 
-class _UpdateTodoScreenState extends State<UpdateTodoScreen> {
   late final TextEditingController updateTodoController;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late final bool isCompleted;
 
   @override
-  void initState() {
-    updateTodoController =
-        TextEditingController(text: widget.getTodosInformationEntity!.todo);
-    isCompleted = widget.getTodosInformationEntity!.completed;
-
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    updateTodoController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    updateTodoController = TextEditingController(text: todoDescription ?? '');
+
     return BlocConsumer<TaskManagerBloc, TaskManagerState>(
       builder: (context, state) => Form(
         key: formKey,
         child: PopScope(
-          canPop:
-              state.updateTodoStates != RequestStates.loading ? true : false,
+          canPop: state.updateTodoStates != RequestStates.loading,
           child: Scaffold(
             appBar: AppBar(
               centerTitle: true,
@@ -121,9 +104,7 @@ class _UpdateTodoScreenState extends State<UpdateTodoScreen> {
                         if (formKey.currentState!.validate()) {
                           UpdateTodoParameters parameters =
                               UpdateTodoParameters(
-                                  completed: isCompleted,
-                                  todoID:
-                                      widget.getTodosInformationEntity!.todoID);
+                                  completed: isCompleted, todoID: todoID!);
                           context.read<TaskManagerBloc>().add(
                                 UpdateTodoEvent(parameters),
                               );

@@ -15,7 +15,7 @@ import 'modules/auth/presentation/pages/auth_screen.dart';
 import 'modules/task_manager/domain/parameters/get_todo_parameters.dart';
 import 'modules/task_manager/presentation/bloc/task_manager_bloc.dart';
 
-Widget widget = const AuthScreen();
+Widget widget = AuthScreen();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -28,7 +28,7 @@ void main() async {
   if (AppKeys.userToken != null) {
     widget = TodosScreen();
   } else {
-    widget = const AuthScreen();
+    widget = AuthScreen();
   }
   runApp(const MyApp());
 }

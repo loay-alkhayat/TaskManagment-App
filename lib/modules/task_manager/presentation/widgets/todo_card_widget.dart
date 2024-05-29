@@ -81,8 +81,9 @@ class TodoCardWidget extends StatelessWidget {
                   Functions.navigatorPush(
                       context: context,
                       screenNameToNavigate: UpdateTodoScreen(
-                          getTodosInformationEntity:
-                              getTodosInformationEntity));
+                        todoID: getTodosInformationEntity.todoID,
+                        todoDescription: getTodosInformationEntity.todo,
+                      ));
                   break;
                 case 2:
                   DeleteTodoParameters parameters =

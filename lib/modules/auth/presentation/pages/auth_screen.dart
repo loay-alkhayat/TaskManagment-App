@@ -19,33 +19,17 @@ import '../../../../core/services/services_locator.dart';
 import '../../domain/parameters/auth_parameters.dart';
 import '../bloc/auth_state.dart';
 
-class AuthScreen extends StatefulWidget {
-  const AuthScreen({super.key});
+class AuthScreen extends StatelessWidget {
+   AuthScreen({super.key});
 
-  @override
-  State<AuthScreen> createState() => _AuthScreenState();
-}
 
-class _AuthScreenState extends State<AuthScreen> {
-  late final TextEditingController _userNameController;
-  late final TextEditingController _passwordController;
+
+   final TextEditingController _userNameController= TextEditingController(text: "kminchelle");
+   final TextEditingController _passwordController = TextEditingController(text: "0lelplR");
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   bool obscurePassword = true;
 
-  @override
-  void initState() {
-    _userNameController = TextEditingController(text: "kminchelle");
-    _passwordController = TextEditingController(text: "0lelplR");
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _userNameController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -193,7 +177,6 @@ class _AuthScreenState extends State<AuthScreen> {
                                     password: _passwordController.text,
                                   );
 
-                                  // Dispatching the event to the Bloc
                                   context.read<AuthBloc>().add(
                                         LoginPressedButtonEvent(
                                             params: parameters),
