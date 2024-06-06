@@ -8,7 +8,7 @@ import '../../../../../core/errors/failures.dart';
 import '../../../../../core/services/dio_services.dart';
 import '../data_sources/delete_todo_data_source/delete_todo_data_source.dart';
 
-class DeleteTodoRepositoryImp extends DeleteTodoRepository {
+class DeleteTodoRepositoryImp implements DeleteTodoRepository {
   final DeleteTodoDataSource deleteTodoDataSource;
 
   DeleteTodoRepositoryImp(this.deleteTodoDataSource);

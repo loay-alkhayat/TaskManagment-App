@@ -8,7 +8,7 @@ import '../../../../../core/services/dio_services.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../remote/data_sources/auth_data_source/auth_data_source.dart';
 
-class AuthRepositoryImp extends AuthRepository {
+class AuthRepositoryImp implements AuthRepository {
   final AuthDataSource authDataSource;
 
   AuthRepositoryImp(this.authDataSource);

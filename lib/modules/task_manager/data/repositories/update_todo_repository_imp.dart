@@ -8,7 +8,7 @@ import '../../domain/repositories/update_todo_repository.dart';
 import '../data_sources/update_todo_data_source/update_todo_data_source.dart';
 import '../models/update_todo_model.dart';
 
-class UpdateTodoRepositoryImp extends UpdateTodoRepository {
+class UpdateTodoRepositoryImp implements UpdateTodoRepository {
   final UpdateTodoDataSource updateTodoDataSource;
 
   UpdateTodoRepositoryImp(this.updateTodoDataSource);

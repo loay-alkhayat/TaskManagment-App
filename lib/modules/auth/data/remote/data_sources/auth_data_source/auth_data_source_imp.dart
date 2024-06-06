@@ -8,7 +8,7 @@ import '../../../../../../core/services/dio_services.dart';
 import '../../../model/auth_model.dart';
 import 'auth_data_source.dart';
 
-class AuthDataSourceImp extends AuthDataSource {
+class AuthDataSourceImp implements AuthDataSource {
   @override
   Future<AuthModel> login(AuthParameters parameters) async {
     try {

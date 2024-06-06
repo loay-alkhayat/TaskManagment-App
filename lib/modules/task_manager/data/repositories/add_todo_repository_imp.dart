@@ -8,7 +8,7 @@ import '../../../../../core/services/dio_services.dart';
 import '../data_sources/add_todo_data_source/add_todo_data_source.dart';
 import '../models/add_todo_model.dart';
 
-class AddTodoRepositoryImp extends AddTodoRepository {
+class AddTodoRepositoryImp implements AddTodoRepository {
   final AddTodoDataSource addTodoDataSource;
 
   AddTodoRepositoryImp(this.addTodoDataSource);

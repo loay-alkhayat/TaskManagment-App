@@ -8,7 +8,7 @@ import '../../../../../core/services/dio_services.dart';
 import '../../models/add_todo_model.dart';
 import 'add_todo_data_source.dart';
 
-class AddTodoDataSourceImp extends AddTodoDataSource {
+class AddTodoDataSourceImp implements AddTodoDataSource {
   @override
   Future<AddTodoModel> addTodo(AddTodoParameters parameters) async {
     try {

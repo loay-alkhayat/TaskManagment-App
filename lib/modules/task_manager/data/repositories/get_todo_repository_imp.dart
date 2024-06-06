@@ -8,7 +8,7 @@ import '../../domain/repositories/get_todo_repository.dart';
 import '../data_sources/get_todo_data_source/get_todo_data_source.dart';
 import '../models/get_todo_model.dart';
 
-class GetTodoRepositoryImp extends GetTodoRepository {
+class GetTodoRepositoryImp implements GetTodoRepository {
   final GetTodoDataSource getTodoDataSource;
 
   GetTodoRepositoryImp(this.getTodoDataSource);
